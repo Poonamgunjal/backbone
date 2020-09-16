@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <table class="table" id="blogs-table">
+                <thead >
+                  <tr class="table-headers">
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>URL</th>
+                    <th>Action</th>
+                  </tr>
+                  <tr>
+                    <td><input id="author"></td>
+                    <td><input id="title"></td>
+                    <td><input id="url"></td>
+                    <td><button class="btn btn-primary" id="add">Add Blog</button></td>
+                </tr>
+                </thead>
+                <tbody class="content">
+                    <script type="text/template" id="blogs"> 
+                        <td ><%- author %></td>
+                        <td><%- title %></td>
+                        <td><%- URL %></td>
+                        <td><button type="button" class="btn btn-warning edit" data-toggle="modal" data-target="#updatedata">Edit</button>
+                            &nbsp;&nbsp;<button type="button" class="btn btn-danger delete">Delete</button></td>
+                    
+                    </script>
+                   
+                </tbody>
+                
+                <div class="modal fade" id="updatedata" tabindex="-1" role="dialog" aria-labelledby="updatedata" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="updatedataTitle">Update Blog</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="update-data">Update Author : &nbsp;<input  id="author1" value="" placeholder="author"></div>
+                            <div class="update-data">Update Title  : &nbsp; &nbsp;&nbsp;<input  id="title1" value="" placeholder="title"></div>
+                            <div class="update-data">Update URL    : &nbsp; &nbsp;&nbsp;  <input  id="url1" value="" placeholder="URL"></div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <button class="btn btn-primary" id="edit">Update Blog</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </table>
+        </div>
+
+        <script src="js/lib/jquery-min.js"></script>
+        <script src="js/lib/underscore-min.js"></script>
+        <script src="js/lib/backbone-min.js"></script>
+        <script src="js/lib/bootstrap-min.js"></script>
+        <script src="js/lib/bootstrap.js"></script>
+        <script src="js/model/Blog.js"></script>
+        <script src="js/collection/blogItems.js"></script>
+        <script src="js/view/blogListView.js"></script>
+        <script src="js/view/modalView.js"></script>
+        <script src="js/view/blogView.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
