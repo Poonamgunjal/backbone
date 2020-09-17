@@ -1,35 +1,39 @@
-var BlogView = Backbone.View.extend({
-	tagName: "tr",
-	el: "#blogs-table",
-	collection:blogItems,
-	
-	events: {
-		"click #add": "onAddBlog",
+var BlogsView = Backbone.View.extend({
+	model: blogs,
+	el: $('.blogs-list'),
+	initialize: function() {
+		var self = this;
+		this.model.on('add', this.render, this);
+		this.model.on('change', function() {
+			setTimeout(function() {
+				self.render();
+			}, 30);
+		},this);
+		this.model.on('remove', this.render, this);
 	},
-	
-    initialize: function() {
-		
-        this.render();
-	},
-	onAddBlog: function(){
-		  var author = $('#author').val();
-		  var title = $('#title').val();
-		  var URL = $('#URL').val();
-		  var addBlog = new blogItems;
-
-          var addBlogs = addBlog.create({id:3,author:''+ author, title : ''+title, URL:''+ URL});
-		  var blogsView = new BlogListView({ collection: addBlogs,model:Blog });
-
-		this.$el.append(blogsView.$el);
-	},
-  
-    render: function() {
-        this.collection.each(function(my_collection) {
-            var blogsView = new BlogListView({ collection: my_collection,model:Blog });
-			blogsView.render();
-            this.$el.append(blogsView.$el);
-        }, this)
-    }
+	render: function() {
+		var self = this;
+		this.$el.html('');
+		_.each(this.model.toArray(), function(blog) {
+			self.$el.append((new BlogView({model: blog})).render().$el);
+		});
+		return this;
+	}
 });
 
-var blogView = new BlogView({ collection: my_collection,model:Blog });
+var blogsView = new BlogsView();
+
+$(document).ready(function() {
+	$('.add-blog').on('click', function() {
+		var blog = new Blog({
+			author: $('.author-input').val(),
+			title: $('.title-input').val(),
+			url: $('.url-input').val()
+		});
+		$('.author-input').val('');
+		$('.title-input').val('');
+		$('.url-input').val('');
+		console.log(blog.toJSON());
+		blogs.add(blog);
+	})
+})

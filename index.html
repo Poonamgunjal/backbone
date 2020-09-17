@@ -7,7 +7,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/styles.css">
@@ -24,47 +23,27 @@
                     <th>Action</th>
                   </tr>
                   <tr>
-                    <td><input id="author"></td>
-                    <td><input id="title"></td>
-                    <td><input id="url"></td>
-                    <td><button class="btn btn-primary" id="add">Add Blog</button></td>
+                    <td><input class="form-control author-input"></td>
+					<td><input class="form-control title-input"></td>
+					<td><input class="form-control url-input"></td>
+                    <td><button class="btn btn-primary add-blog">Add Blog</button></td>
                 </tr>
                 </thead>
-                <tbody class="content">
-                    <script type="text/template" id="blogs"> 
-                        <td ><%- author %></td>
-                        <td><%- title %></td>
-                        <td><%- URL %></td>
-                        <td><button type="button" class="btn btn-warning edit" data-toggle="modal" data-target="#updatedata">Edit</button>
-                            &nbsp;&nbsp;<button type="button" class="btn btn-danger delete">Delete</button></td>
-                    
-                    </script>
-                   
-                </tbody>
-                
-                <div class="modal fade" id="updatedata" tabindex="-1" role="dialog" aria-labelledby="updatedata" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="updatedataTitle">Update Blog</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="update-data">Update Author : &nbsp;<input  id="author1" value="" placeholder="author"></div>
-                            <div class="update-data">Update Title  : &nbsp; &nbsp;&nbsp;<input  id="title1" value="" placeholder="title"></div>
-                            <div class="update-data">Update URL    : &nbsp; &nbsp;&nbsp;  <input  id="url1" value="" placeholder="URL"></div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                          <button class="btn btn-primary" id="edit">Update Blog</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </table>
-        </div>
+            </thead>
+			<tbody class="blogs-list"></tbody>
+		</table>
+	</div>
+
+	<script type="text/template" class="blogs-list-template">
+        <td><span class="author"><%= author %></span></td>
+        <td><span class="title"><%= title %></span></td>
+        <td><span class="url"><%= url %></span></td>
+        <td><button class="btn btn-warning edit-blog">Edit</button>
+             <button class="btn btn-danger delete-blog">Delete</button>
+             <button class="btn btn-success update-blog" style="display:none">Update</button> 
+             <button class="btn btn-danger cancel" style="display:none">Cancel</button>
+            </td>
+    </script>
 
         <script src="js/lib/jquery-min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
@@ -74,9 +53,8 @@
         <script src="js/model/Blog.js"></script>
         <script src="js/collection/blogItems.js"></script>
         <script src="js/view/blogListView.js"></script>
-        <script src="js/view/modalView.js"></script>
         <script src="js/view/blogView.js"></script>
-        <script src="js/main.js"></script>
+       
 
     </body>
 </html>
