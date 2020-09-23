@@ -10,51 +10,126 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/styles.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div class="container">
-            <table class="table" id="blogs-table">
-                <thead >
-                  <tr class="table-headers">
-                    <th>Author</th>
-                    <th>Title</th>
-                    <th>URL</th>
-                    <th>Action</th>
-                  </tr>
-                  <tr>
-                    <td><input class="form-control author-input"></td>
-					<td><input class="form-control title-input"></td>
-					<td><input class="form-control url-input"></td>
-                    <td><button class="btn btn-primary add-blog">Add Blog</button></td>
-                </tr>
-                </thead>
-            </thead>
-			<tbody class="blogs-list"></tbody>
-		</table>
-	</div>
+        <div class="container"> 
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" data-url="/home" id='home' data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                  <a class="nav-item nav-link " data-url="/blog" id='blog' data-toggle="tab" role="tab" aria-controls="nav-blog" aria-selected="false">Blogs</a>
+                  <a class="nav-item nav-link" data-url="/tour" id='tour' data-toggle="tab" role="tab" aria-controls="nav-tour" aria-selected="false">Tours</a>
+                </div>
+              </nav>
+             
+              <div class="tab-content">
+                <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <div class="container text-center" style="padding:70px;color:green;">
+                    <h2> You can select Blogs and Tours to view in Details</h2>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-blog" role="tabpanel" aria-labelledby="nav-blog-tab">
+                    <div class="container text-center" style="padding:70px;">
+                        <table class="table" id="blogs-table">
+                            <thead >
+                              <tr class="table-headers">
+                                <th>Author</th>
+                                <th>Title</th>
+                                <th>URL</th>
+                                <th>Action</th>
+                              </tr>
+                              <tr>
+                                <td><input class="form-control author-input"></td>
+                                <td><input class="form-control title-input"></td>
+                                <td><input class="form-control url-input"></td>
+                                <td><button class="btn btn-primary add-blog">Add Blog</button></td>
+                            </tr>
+                            </thead>
+                        </thead>
+                        <tbody class="blogs-list"></tbody>
+                    </table>
+                </div>
+            
+                <script type="text/template" class="blogs-list-template">
+                    <td><span class="author"><%= author %></span></td>
+                    <td><span class="title"><%= title %></span></td>
+                    <td><span class="url"><%= url %></span></td>
+                    <td><button class="btn btn-warning edit-blog">Edit</button>
+                         <button class="btn btn-danger delete-blog">Delete</button>
+                         <button class="btn btn-success update-blog" style="display:none">Update</button> 
+                         <button class="btn btn-danger cancel" style="display:none">Cancel</button>
+                        </td>
+                </script>
+                </div>
+                <div class="tab-pane fade" id="nav-tour" role="tabpanel" aria-labelledby="nav-tour-tab">
 
-	<script type="text/template" class="blogs-list-template">
-        <td><span class="author"><%= author %></span></td>
-        <td><span class="title"><%= title %></span></td>
-        <td><span class="url"><%= url %></span></td>
-        <td><button class="btn btn-warning edit-blog">Edit</button>
-             <button class="btn btn-danger delete-blog">Delete</button>
-             <button class="btn btn-success update-blog" style="display:none">Update</button> 
-             <button class="btn btn-danger cancel" style="display:none">Cancel</button>
-            </td>
-    </script>
+                    <div class="container text-center tour-card-list flexbox" style="padding:70px;">
+                      
+                    </div>
+                    <script type="text/template" class="tour-card-template">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="assets/tour-2-cover.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title" id='name'><%=name%></h5>
+                              <h6 class="card-text text-left" id='duration'><%=duration%></h6>
+                              <p class="card-text text-left" id='description' style='font-family: cursive;'><%=description%></p>
+                              <div class="row">
+                              <div class=" col-md-6 text-left" style="color:black;font-size:12px;">
+                                <p class="card-text text-left" id='address'>
+                                  <a><i class="fa fa-map-marker" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                    &nbsp;</a><%= address %>
+                                  </p>
+
+                                 <p class="card-text text-left" id='stops' style="font-size:14px;">
+                                <a><i class="fa fa-flag" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                  &nbsp;</a><%= stops %>
+                                </p>
+                              </div>
+                              <div class="col-md-6 text-center" style="font-size:14px;">
+                                <p class="card-text text-left" id='stops'>
+                                  <a><i class="fa fa-calendar-o" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                    &nbsp;</a><%= stops %>
+                                  </p>
+                                  <p class="card-text text-left" id='stops'>
+                                    <a><i class="fa fa-user-o" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                      &nbsp;</a><%= people %>
+                                    </p>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="row card-footer text-muted" style="font-size:15px;"> 
+                              <div class=" col-md-8 text-left" style="color:black;">
+                                <span class="card-text" id='price'><%=price%></span>
+                                <p class="card-text" id='rating'><%=rating%></span></div>
+                              <div class="col-md-4 text-center">
+                                 <a href="#" class="btn btn-success round-border">Details</a>
+                              </div>
+                            </div>
+                          </div>
+                    </script>
+                </div>
+              </div>
+        </div>
+
+        
 
         <script src="js/lib/jquery-min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
         <script src="js/lib/backbone-min.js"></script>
-        <script src="js/lib/bootstrap-min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
         <script src="js/lib/bootstrap.js"></script>
+        <script src="js/model/Tour.js"></script>
+       
         <script src="js/model/Blog.js"></script>
         <script src="js/collection/blogItems.js"></script>
+        <script src="js/collection/tourItems.js"></script>
         <script src="js/view/blogListView.js"></script>
         <script src="js/view/blogView.js"></script>
-       
-
+        <script src="js/view/toursListView.js"></script>
+        <script src="js/view/tourView.js"></script>
+        <script src="js/view/containerView.js"></script>
+        
+      
+        <script src="js/router/route.js"></script>
     </body>
 </html>

@@ -14,6 +14,7 @@ var BlogsView = Backbone.View.extend({
 	render: function() {
 		var self = this;
 		this.$el.html('');
+		console.log('in blog view');
 		_.each(this.model.toArray(), function(blog) {
 			self.$el.append((new BlogView({model: blog})).render().$el);
 		});
@@ -21,7 +22,7 @@ var BlogsView = Backbone.View.extend({
 	}
 });
 
-var blogsView = new BlogsView();
+//var blogsView = new BlogsView();
 
 $(document).ready(function() {
 	$('.add-blog').on('click', function() {
