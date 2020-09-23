@@ -24,12 +24,12 @@
              
               <div class="tab-content">
                 <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                  <div class="container text-center" style="padding:70px;color:green;">
+                  <div class="container text-center home-tab">
                     <h2> You can select Blogs and Tours to view in Details</h2>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-blog" role="tabpanel" aria-labelledby="nav-blog-tab">
-                    <div class="container text-center" style="padding:70px;">
+                    <div class="container text-center">
                         <table class="table" id="blogs-table">
                             <thead >
                               <tr class="table-headers">
@@ -63,46 +63,50 @@
                 </div>
                 <div class="tab-pane fade" id="nav-tour" role="tabpanel" aria-labelledby="nav-tour-tab">
 
-                    <div class="container text-center tour-card-list flexbox" style="padding:70px;">
+                    <div class="container text-center tour-card-list flexbox">
                       
                     </div>
                     <script type="text/template" class="tour-card-template">
                         <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="assets/tour-2-cover.jpg" alt="Card image cap">
                             <div class="card-body">
-                              <h5 class="card-title" id='name'><%=name%></h5>
-                              <h6 class="card-text text-left" id='duration'><%=duration%></h6>
-                              <p class="card-text text-left" id='description' style='font-family: cursive;'><%=description%></p>
+                               
+                                  <h5 class="card-title tour-title" id='name'><%=name%></h5>
+                                <h6 class="card-text text-left" id='duration'><%=duration%></h6>
+                                <p class="card-text text-left" id='description' style='font-family: cursive;'><%=description%></p>
+                                
                               <div class="row">
                               <div class=" col-md-6 text-left" style="color:black;font-size:12px;">
                                 <p class="card-text text-left" id='address'>
-                                  <a><i class="fa fa-map-marker" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                  <a><i class="fa fa-map-marker icons" aria-hidden="true"></i>
                                     &nbsp;</a><%= address %>
                                   </p>
 
-                                 <p class="card-text text-left" id='stops' style="font-size:14px;">
-                                <a><i class="fa fa-flag" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                 <p class="card-text text-left data" id='stops'>
+                                <a><i class="fa fa-flag icons" aria-hidden="true"></i>
                                   &nbsp;</a><%= stops %>
                                 </p>
                               </div>
-                              <div class="col-md-6 text-center" style="font-size:14px;">
+                              <div class="col-md-6 text-center data">
                                 <p class="card-text text-left" id='stops'>
-                                  <a><i class="fa fa-calendar-o" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                  <a><i class="fa fa-calendar-o icons" aria-hidden="true"></i>
                                     &nbsp;</a><%= stops %>
                                   </p>
                                   <p class="card-text text-left" id='stops'>
-                                    <a><i class="fa fa-user-o" style="color:green;font-size:17px;" aria-hidden="true"></i>
+                                    <a><i class="fa fa-user-o icons" aria-hidden="true"></i>
                                       &nbsp;</a><%= people %>
                                     </p>
                               </div>
                             </div>
                             </div>
-                            <div class="row card-footer text-muted" style="font-size:15px;"> 
-                              <div class=" col-md-8 text-left" style="color:black;">
-                                <span class="card-text" id='price'><%=price%></span>
-                                <p class="card-text" id='rating'><%=rating%></span></div>
-                              <div class="col-md-4 text-center">
-                                 <a href="#" class="btn btn-success round-border">Details</a>
+                            <div class="card-footer text-muted data"> 
+                              <div class="row">
+                                  <div class=" col-md-8 text-left" style="color:black;">
+                                  <span class="card-text" id='price'><%=price%></span>
+                                  <p class="card-text" id='rating'><%=rating%></span></div>
+                                  <div class="col-md-4 text-center">
+                                  <a href="#" class="btn btn-success round-border">Details</a>
+                                </div>
                               </div>
                             </div>
                           </div>

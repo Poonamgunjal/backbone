@@ -33,4 +33,31 @@
   .round-border{
       border-radius: 20px;
   }
+
+  .home-tab{
+    padding:70px;
+    color:green;
+  }
+  #nav-blog{
+    padding:70px; 
+  }
+  #nav-blog,#nav-tour{
+    padding:55px; 
+  }
+  .icons{
+    color:green;
+    font-size:17px;
+  }
+  .data{
+    font-size:15px;
+  }
+  .tour-title{
+    font-family: initial;
+    background: darkseagreen;
+    width: 245px;
+    text-align: center;
+    height: 40px;
+    color: whitesmoke;
+    padding-top: 8px;
+  }
  
